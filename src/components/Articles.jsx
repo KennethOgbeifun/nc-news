@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
@@ -25,8 +26,19 @@ function Articles() {
           {articles.map((article) => {
             return (
               <div key={article.article_id} className="article-card">
-                <h2 className="article-title">{article.title}</h2>
+                <Link to={`/articles/${article.article_id}`}>
+                  <h2 className="article-title">{article.title}</h2>
+                </Link>{" "}
                 <p className="article-data">By {article.author}</p>
+                <div>
+                  {article.article_img_url && (
+                    <img
+                      className="article-img-small"
+                      src={article.article_img_url}
+                      alt={article.title}
+                    />
+                  )}
+                </div>
                 <p className="article-preview">
                   Will change to the article.body <br />
                   ---Change--- <br />
@@ -34,9 +46,6 @@ function Articles() {
                   Omnis cumque repellat quasi a ut voluptatum maiores, velit
                   distinctio quas excepturi delectus itaque maxime fugiat
                   veritatis aut quam, quae quaerat quis?
-                </p>
-                <p className="article-data">
-                  Topic: {article.topic} || Create link to topic when built!
                 </p>
                 <p className="article-data">
                   Votes: {article.votes} || Add a symbol!!

@@ -11,7 +11,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Articles />} />
-          <Route path="/article/:article_id" element={<SingleArticle />} />
+          <Route path="/articles/:article_id" element={<SingleArticle />} />
         </Routes>
       </div>
     </>
