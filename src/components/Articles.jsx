@@ -14,6 +14,8 @@ function Articles() {
       })
       .catch((error) => console.error("error fetching"));
   }, []);
+  //   if (isLoading) return <p>Loading...</p>;
+  //   if (error) return <p>Error: {error}</p>;
 
   return (
     <>

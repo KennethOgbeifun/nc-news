@@ -21,7 +21,7 @@ function Topics() {
         <>
           <button>{topics[0]?.slug}</button>
           <button>{topics[1]?.slug}</button>
-          <button>{topics[2]?.slug}</button>{" "}
+          <button>{topics[2]?.slug}</button>
         </>
       )}
     </>
