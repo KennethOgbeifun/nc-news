@@ -7,6 +7,15 @@ body {
   justify-content: center;
 }
 
+nav {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white; /* Set a background color (optional) */
+  padding: 0 0; /* Adjust padding as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+}
+
 .container {
   width: 80%;
   max-width: 800px;
@@ -37,9 +46,15 @@ body {
 }
 
 .article-title {
+  text-align: center;
   font-size: 18px;
   color: #222;
   margin: 0 0 auto;
+}
+
+.article-body {
+  font-size: 14px;
+  color: black;
 }
 
 .article-preview {
@@ -48,6 +63,19 @@ body {
 }
 
 .article-data {
+  text-align: center;
   font-size: 15px;
   color: #222;
+}
+
+.article-img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.article-img-small {
+  max-width: 70%;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
 }
