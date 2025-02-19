@@ -42,6 +42,11 @@ body {
   margin: 0 0 auto;
 }
 
+.article-body {
+  font-size: 14px;
+  color: black;
+}
+
 .article-preview {
   font-size: 14px;
   color: #555;
@@ -50,4 +55,9 @@ body {
 .article-data {
   font-size: 15px;
   color: #222;
+}
+
+.article-img {
+  max-width: 100%;
+  border-radius: 5px;
 }
