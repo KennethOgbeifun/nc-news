@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import GetComments from "./Comments";
 
 export function SingleArticle() {
   const { article_id } = useParams();
@@ -12,7 +13,6 @@ export function SingleArticle() {
       .then((res) => res.json())
       .then((data) => {
         setSingleArticle(data);
-        console.log(data);
 
         setIsLoading(false);
       })
@@ -41,6 +41,7 @@ export function SingleArticle() {
           />
         )}
         <p className="article-body">{singleArticle.body}</p>
+        <GetComments />
       </div>
     </>
   );

@@ -79,3 +79,20 @@ nav {
   display: block;
   margin: 0 auto;
 }
+
+.comments-section {
+  margin-top: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+.comments-section h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.comment {
+  margin: 5px auto;
+}
+.comment-author {
+}
