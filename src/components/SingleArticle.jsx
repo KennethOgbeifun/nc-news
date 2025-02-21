@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GetComments from "./Comments";
 import { handleVote } from "../utilities/handleVotes";
+import { PostComment } from "./PostComment";
 
 export function SingleArticle() {
   const { article_id } = useParams();
@@ -60,6 +61,9 @@ export function SingleArticle() {
         >
           Dislike
         </button>
+        <h3 className="comment-h3">Comments</h3>
+
+        <PostComment />
 
         <GetComments />
       </div>

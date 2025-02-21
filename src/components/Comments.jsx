@@ -30,7 +30,6 @@ function GetComments() {
   return (
     <>
       <div className="comments-section">
-        <h3>Comments</h3>
         {comments.length === 0 ? (
           <p>No comments yet. Be the first to comment!</p>
         ) : (
