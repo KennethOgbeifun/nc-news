@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Topics() {
   const [topics, setTopics] = useState([]);
@@ -17,13 +18,12 @@ function Topics() {
 
   return (
     <>
-      {topics.length > 0 && (
-        <>
-          <button>{topics[0]?.slug}</button>
-          <button>{topics[1]?.slug}</button>
-          <button>{topics[2]?.slug}</button>
-        </>
-      )}
+      {topics.length > 0 &&
+        topics.map((topic) => (
+          <Link key={topic.slug} to={`/topics/${topic.slug}`}>
+            <button>{topic.slug}</button>
+          </Link>
+        ))}
     </>
   );
 }

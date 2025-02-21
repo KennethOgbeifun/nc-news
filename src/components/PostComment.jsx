@@ -23,7 +23,7 @@ export function PostComment() {
     )
       .then((res) => {
         if (!res.ok) {
-          throw new Error(`Error: ${res.statusText}`);
+          throw new Error("error posting");
         }
         res.json();
       })
