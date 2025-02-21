@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     fetch("https://ncnews-clfh.onrender.com/api/articles")
       .then((res) => res.json())
@@ -11,12 +14,16 @@ function Articles() {
           return Promise.reject("msg: error");
         } else {
           setArticles(data);
+          setIsLoading(false);
         }
       })
-      .catch((error) => console.error("error fetching"));
+      .catch((error) => {
+        setError(error.msg);
+        setIsLoading(false);
+      });
   }, []);
-  //   if (isLoading) return <p>Loading...</p>;
-  //   if (error) return <p>Error: {error}</p>;
+  if (isLoading) return <p className="loading">Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <>

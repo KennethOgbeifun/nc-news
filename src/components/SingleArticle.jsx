@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GetComments from "./Comments";
+import { handleVote } from "../utilities/handleVotes";
 
 export function SingleArticle() {
   const { article_id } = useParams();
@@ -13,17 +14,16 @@ export function SingleArticle() {
       .then((res) => res.json())
       .then((data) => {
         setSingleArticle(data);
-
         setIsLoading(false);
       })
       .catch((err) => {
         setError(err.message);
         setIsLoading(false);
       });
-  }, []);
+  }, [article_id]);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (isLoading) return <p className="loading">Loading...</p>;
+  if (error) return <p className="error">Error: {error}</p>;
 
   return (
     <>
@@ -41,6 +41,26 @@ export function SingleArticle() {
           />
         )}
         <p className="article-body">{singleArticle.body}</p>
+        <div>
+          <span className="article-data">Votes:{singleArticle.votes}</span>
+        </div>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleVote(1, singleArticle, setSingleArticle, article_id);
+          }}
+        >
+          Like
+        </button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleVote(-1, singleArticle, setSingleArticle, article_id);
+          }}
+        >
+          Dislike
+        </button>
+
         <GetComments />
       </div>
     </>
