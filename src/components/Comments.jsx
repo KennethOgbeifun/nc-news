@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { handleDelete } from "../utilities/handleDeleteComments";
 function GetComments() {
   const { article_id } = useParams();
   const [comments, setComments] = useState([]);
@@ -22,7 +23,7 @@ function GetComments() {
         setError(err.message);
         setIsLoading(false);
       });
-  }, []);
+  }, [article_id]);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -40,6 +41,13 @@ function GetComments() {
                 By {comment.author} on{" "}
                 {new Date(comment.created_at).toLocaleDateString()}
               </p>
+              <button
+                onClick={() =>
+                  handleDelete(comment.comment_id, setComments, setError)
+                }
+              >
+                Delete
+              </button>
             </div>
           ))
         )}
