@@ -1,8 +1,36 @@
-# React + Vite
+NC-News
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack news platform inspired by Reddit, allowing users to post articles, comment on and like content in a social media environment.
 
-Currently, two official plugins are available:
+Features
+User authentication and authorization
+Create, read, update, delete articles
+Comment on and like articles and comments
+Vote counts and sorting (by date, popularity)
+Responsive UI with client-side routing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tech Stack
+  Front End
+    React (v19)  
+    Vite
+    React Router DOM
+
+  Back End
+    Node.js
+    Express
+    PostgreSQL (via pg)
+
+  Testing & Tools
+    Jest 
+    Supertest
+    Husky (pre-commit hooks)
+    Nodemon (development)
+
+Deployment
+  Render (back end)
+  Supabase (front end hosting)
+
+Prerequisites
+  Node.js  16 or above
+  npm (or yarn)
+  PostgreSQL
