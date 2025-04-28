@@ -36,7 +36,7 @@ Tech Stack
 
 Deployment
   Render (back end hosting)
-  Supabase (back end )
+  Supabase (back end db)
   Netlify (front end hosting)
 
 
