@@ -2,7 +2,12 @@ NC-News
 
 A full-stack news platform inspired by Reddit, allowing users to post articles, comment on and like content in a social media environment.
 
+Front-end: https://roaring-churros-864840.netlify.app/
+Back-end: https://ncnews-clfh.onrender.com/api
+
+
 Features
+
 User authentication and authorization
 Create, read, update, delete articles
 Comment on and like articles and comments
@@ -15,10 +20,12 @@ Tech Stack
     Vite
     React Router DOM
 
+
   Back End
     Node.js
     Express
     PostgreSQL (via pg)
+
 
   Testing & Tools
     Jest 
@@ -26,11 +33,16 @@ Tech Stack
     Husky (pre-commit hooks)
     Nodemon (development)
 
+
 Deployment
-  Render (back end)
-  Supabase (front end hosting)
+  Render (back end hosting)
+  Supabase (back end )
+  Netlify (front end hosting)
+
 
 Prerequisites
   Node.js  16 or above
   npm (or yarn)
   PostgreSQL
+
+
