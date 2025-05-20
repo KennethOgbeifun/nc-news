@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Nav";
 import Articles from "./components/Articles";
-import { SingleArticle } from "./components/singleArticle";
+import { SingleArticle } from "./components/SingleArticle";
 function App() {
   return (
     <>
