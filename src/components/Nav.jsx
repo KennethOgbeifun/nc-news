@@ -1,12 +1,15 @@
+import { Link } from "react-router-dom";
 import Topics from "./Topics";
 
 function Nav() {
   return (
     <nav>
+      <div className="nav-container">
+      <Link to={`/`}>
       <button className="home-button">ArticleTube</button>
-      <button className="searchbutton">search</button>
-      <button className="menu-button">menu</button>
+      </Link>
       <Topics />
+      </div>
     </nav>
   );
 }

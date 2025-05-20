@@ -53,15 +53,10 @@ function Articles() {
                   )}
                 </div>
                 <p className="article-preview">
-                  Will change to the article.body <br />
-                  ---Change--- <br />
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Omnis cumque repellat quasi a ut voluptatum maiores, velit
-                  distinctio quas excepturi delectus itaque maxime fugiat
-                  veritatis aut quam, quae quaerat quis?
+                 {article.body}
                 </p>
                 <p className="article-data">
-                  Votes: {article.votes} || Add a symbol!!
+                  Votes: {article.votes} 👍
                 </p>
               </div>
             );

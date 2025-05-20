@@ -16,12 +16,18 @@ function Topics() {
       .catch((error) => console.error("error fetching"));
   }, []);
 
+  function Captitalize(slug) {
+    let name = slug
+    name = name.charAt(0).toUpperCase() + name.slice(1)
+    return name
+  }
+
   return (
     <>
       {topics.length > 0 &&
         topics.map((topic) => (
           <Link key={topic.slug} to={`/topics/${topic.slug}`}>
-            <button>{topic.slug}</button>
+            <button>{Captitalize(topic.slug)}</button>
           </Link>
         ))}
     </>
