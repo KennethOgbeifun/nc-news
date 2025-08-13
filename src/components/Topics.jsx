@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Topics() {
   const [topics, setTopics] = useState([]);
+  
+
   useEffect(() => {
     fetch("https://ncnews-clfh.onrender.com/api/topics")
       .then((res) => res.json())
@@ -16,21 +18,34 @@ function Topics() {
       .catch((error) => console.error("error fetching"));
   }, []);
 
-  function Captitalize(slug) {
+  function captitalise(slug) {
     let name = slug
     name = name.charAt(0).toUpperCase() + name.slice(1)
     return name
   }
 
   return (
-    <>
-      {topics.length > 0 &&
-        topics.map((topic) => (
-          <Link key={topic.slug} to={`/topics/${topic.slug}`}>
-            <button>{Captitalize(topic.slug)}</button>
-          </Link>
-        ))}
-    </>
+  
+      <div className="flex items-center gap-2">
+      {topics.map((topic) => (
+        <NavLink
+          key={topic.slug}
+          to={`/topics/${topic.slug}`}
+          aria-current={({ isActive }) => (isActive ? "page" : undefined)}
+          className={({ isActive }) =>
+            [
+              "px-3 py-1 text-sm font-medium rounded-full border transition duration-200 hover:scale-105 focus:outline-none",
+              isActive
+                ? "bg-blue-600 text-white border-blue-600 ring-2 ring-blue-500 ring-offset-2"
+                : "bg-white text-gray-900 border-gray-300 hover:bg-blue-500 hover:text-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
+            ].join(" ")
+          }
+        >
+          {captitalise(topic.slug)}
+        </NavLink>
+      ))}
+    </div>
+    
   );
 }
 
