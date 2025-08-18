@@ -39,28 +39,49 @@ export function PostComment() {
   }
 
   return (
-    <>
-      <div className="submit-comment">
-        <h3>Post a comment</h3>
-        {error && <p className="error">Error: {error}</p>}
-        <form onSubmit={handleSubmit}>
+    <div className="bg-white border rounded-2xl shadow-sm p-6 sm:p-8">
+      <h3 className="text-lg font-semibold text-blue-700">Post a comment</h3>
+      {error && <p className="mt-2 text-sm text-red-600">Error: {error}</p>}
+
+      <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-blue-700">
+            Your Username
+          </label>
           <input
             type="text"
-            placeholder="Your Username"
+            placeholder="e.g. cooljmessy"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className="mt-1 w-full rounded-lg border border-blue-300 bg-white px-3 py-2 text-blue-700 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            required
           />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-blue-700">
+            Your Comment
+          </label>
           <textarea
-            type="text"
-            placeholder="Your Comment"
+            placeholder="Write something thoughtful…"
             value={body}
             onChange={(e) => setBody(e.target.value)}
-          ></textarea>
-          <button type="submit" disabled={submitting}>
-            {submitting ? "Submitting..." : "Submit Comment"}
+            rows={4}
+            className="mt-1 w-full rounded-lg border border-blue-300 bg-white px-3 py-2 text-blue-700 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
+
+        <div className="flex items-center justify-end gap-3">
+          <button
+            type="submit"
+            disabled={submitting}
+            className="inline-flex items-center rounded-full bg-blue-600 text-white px-4 py-2 text-sm font-medium hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition"
+          >
+            {submitting ? "Submitting…" : "Submit Comment"}
           </button>
-        </form>
-      </div>
-    </>
+        </div>
+      </form>
+    </div>
   );
 }
