@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Topics from "./Topics";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
@@ -34,34 +35,69 @@ function Articles() {
   return (
     <>
       <div className="container">
-        <h1 className="title">Articles {topic ? `in ${topic}` : ""}</h1>
-        <div className="article-grid">
-          {articles.map((article) => {
-            return (
-              <div key={article.article_id} className="article-card">
-                <Link to={`/articles/${article.article_id}`}>
-                  <h2 className="article-title">{article.title}</h2>
-                </Link>
-                <p className="article-data">By {article.author}</p>
-                <div>
+        <h1 className="mt-10 text-4xl sm:text-5xl front-extrabold tracking-tight">
+          {topic ? `Articles in ${topic[0].toUpperCase() + topic.slice(1)}` : "Latest Articles"}
+        </h1>
+        <p className="mt-3 text-blue-600 max-w-2xl">
+          Handpicked stories from the community. Browse by topic or dive right in.
+        </p>
+
+        <div id="topics-anchor" className="h-0"></div>
+        <section className="mt-6">
+            <Topics />
+          </section>
+
+        <section className="mt-8 columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+          {articles.map((article) => (
+             
+              <article 
+                key={article.article_id} 
+                className="mb-6 break-inside-avoid rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition">
+                
                   {article.article_img_url && (
+                    <a href={`/articles/${article.article_id}`} className="block group">
                     <img
-                      className="article-img-small"
+                      className="w-full h-56 object-cover transition group-hover:opacity-95"
                       src={article.article_img_url}
                       alt={article.title}
+                      loading="lazy"
                     />
+                    </a>
+
                   )}
+
+                <div className="p-4">
+                  <a href={`/articles/${article.article_id}`} className="no-underline">
+                    <h2 className="text-lg font-semibold leading-snug hover:text-blue-600 transition">
+                      {article.title}
+                    </h2>
+                  </a>
+                  <div className="mt-2 text-xs text-blue-600 flex items-center gap-3">
+                    <span>
+                      By {article.author}
+                    </span>
+                    <span className="w-1 h-1 rounded-full bg-gray-300"> </span>
+                    <span>Votes {article.votes} 👍</span>
+                  </div>
+
+                  {article.body && (
+                    <p className="mt-3 text-blue-600">
+                       {article.body.length > 160 ? `${article.body.slice(0, 160)}...` : article.body}   
+                    </p>
+                  )}
+
+                  <div className="mt-4">
+                    <a 
+                      href={`/articles/${article.article_id}`}
+                      className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700"
+                    >
+                      Read more →
+                    </a>
+                  </div>
                 </div>
-                <p className="article-preview">
-                 {article.body}
-                </p>
-                <p className="article-data">
-                  Votes: {article.votes} 👍
-                </p>
-              </div>
-            );
-          })}
-        </div>
+              </article>
+          ))}
+        </section>
       </div>
     </>
   );

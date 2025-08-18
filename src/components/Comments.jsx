@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { handleDelete } from "../utilities/handleDeleteComments";
+
 function GetComments() {
   const { article_id } = useParams();
   const [comments, setComments] = useState([]);
@@ -25,34 +26,42 @@ function GetComments() {
       });
   }, [article_id]);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (isLoading) {return <p className="bg-white border rounded-2xl shadow-sm p-6">Loading...</p>;}
+  if (error) {return <p className="bg-white border rounded-2xl shadow-sm p-6 text-red-600">Error: {error}</p>;}
 
   return (
-    <>
-      <div className="comments-section">
-        {comments.length === 0 ? (
-          <p>No comments yet. Be the first to comment!</p>
-        ) : (
-          comments.map((comment) => (
-            <div key={comment.comment_id} className="comment">
-              <p>{comment.body}</p>
-              <p className="comment-author">
-                By {comment.author} on{" "}
-                {new Date(comment.created_at).toLocaleDateString()}
-              </p>
-              <button
-                onClick={() =>
-                  handleDelete(comment.comment_id, setComments, setError)
-                }
-              >
-                Delete
-              </button>
-            </div>
-          ))
-        )}
-      </div>
-    </>
+    <div className="bg-white border rounded-2xl shadow-sm p-6 sm:p-8">
+      <h3 className="text-lg font-semibold text-blue-700">
+        Comments {comments.length > 0 && <span className="text-blue-500">({comments.length})</span>}
+      </h3>
+
+      {comments.length === 0 ? (
+        <p className="mt-3 text-blue-600">No comments yet. Be the first to comment!</p>
+      ) : (
+        <ul className="mt-4 divide-y divide-gray-200">
+          {comments.map((comment) => (
+            <li key={comment.comment_id} className="py-4">
+              <p className="text-blue-700 leading-relaxed">{comment.body}</p>
+
+              <div className="mt-3 flex items-center justify-between text-sm text-blue-600">
+                <span>
+                  By {comment.author} on{" "}
+                  {new Date(comment.created_at).toLocaleDateString()}
+                </span>
+
+                <button
+                  onClick={() => handleDelete(comment.comment_id, setComments, setError)}
+                  className="inline-flex items-center rounded-full border border-red-300 text-red-600 px-3 py-1 hover:bg-red-50 text-xs transition"
+                  title="Delete comment"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 
