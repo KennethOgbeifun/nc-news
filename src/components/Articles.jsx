@@ -55,23 +55,23 @@ function Articles() {
                 className="mb-6 break-inside-avoid rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition">
                 
                   {article.article_img_url && (
-                    <a href={`/articles/${article.article_id}`} className="block group">
+                    <Link to={`/articles/${article.article_id}`} className="block group">
                     <img
                       className="w-full h-56 object-cover transition group-hover:opacity-95"
                       src={article.article_img_url}
                       alt={article.title}
                       loading="lazy"
                     />
-                    </a>
+                    </Link>
 
                   )}
 
                 <div className="p-4">
-                  <a href={`/articles/${article.article_id}`} className="no-underline">
+                  <Link to={`/articles/${article.article_id}`} className="no-underline">
                     <h2 className="text-lg font-semibold leading-snug hover:text-blue-600 transition">
                       {article.title}
                     </h2>
-                  </a>
+                  </Link>
                   <div className="mt-2 text-xs text-blue-600 flex items-center gap-3">
                     <span>
                       By {article.author}
@@ -87,12 +87,12 @@ function Articles() {
                   )}
 
                   <div className="mt-4">
-                    <a 
-                      href={`/articles/${article.article_id}`}
+                    <Link 
+                      to={`/articles/${article.article_id}`}
                       className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700"
                     >
                       Read more →
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </article>
